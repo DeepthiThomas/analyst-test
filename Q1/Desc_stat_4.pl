@@ -13,10 +13,15 @@ use LWP::Simple;	#module to use getstore - download file
 
 my $url = "http://thin.med.ucalgary.ca/data/analyst-data.csv";
 my $file = "analyst-data-sample.csv";
+print("downloading file from $url. This may take 2-3 minutes....\n");
 my $response = getstore($url,$file);   #download file
 if(is_error($response))                 #check if download success/failure
 {
         die "getstore of $url is failed with $response\n";
+}
+else
+{
+	print("download Success.\n");
 }
 
 open(IN,"<$file") or die "Can not open $file for reading :$!\n"; #open file for reading
